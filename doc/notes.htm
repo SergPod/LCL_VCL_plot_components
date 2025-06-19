@@ -1,0 +1,143 @@
+<html>
+
+<head>
+<title>SGraph notes</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<meta NAME="AUTHOR" CONTENT="S.P.Pod'yachev">
+</head>
+
+<body BGCOLOR="#FFFFFF" background="white.bmp">
+
+<p><a HREF="#Axis imits">Axis limits</a> <br>
+<a HREF="#Data series">Data series</a> <br>
+<a href="#Plot markers">Plot markers</a><br>
+<a HREF="#Plot drawing">Plot drawing</a> <br>
+<a HREF="#Print">Plot print</a><br>
+
+<p><a HREF="sgraph.htm">Sgraph description</a><br>
+</p>
+
+<h3><a NAME="Axis limits"></a>Axis limits</h3>
+
+<p>The Tsp_Axis has properties and method to control axis limits.</p>
+
+<p><tt>property <strong>Min</strong> : double</tt> <br>
+<small>Min is the lowest value an axis</small><br>
+<tt>property <strong>Max</strong> : double</tt> <br>
+<small>Max is the highest value an axis</small> <br>
+<tt>procedure <strong>SetMinMax</strong>(m1,m2:double);</tt><br>
+<small>Used to set Min and Max at once. The minimal value of the m1 and&nbsp; m2 will be
+assigned to the&nbsp; Min and maximal to the Max.<br>
+</small><tt>procedure <strong>MoveMinMax</strong>(aDelta:double); </tt><br>
+<small>Used to change Min and Max on value of aDelta with 'frozen' ticks position.The aim
+is to permit smooth scroll of plot, without ticks jumps. Procedure is especially useful
+for the program which emulates transient recorder. </small><br>
+<tt>property <strong>AutoMin</strong> : boolean default False</tt> <br>
+<small>The AutoMin property controls if axis will adjust the Min value automatically to
+based on the minimum value of its associated data series.</small><br>
+<tt>property <strong>AutoMax</strong> : boolean</tt> <br>
+<small>The AutoMax property controls if axis will adjust the Max value automatically to
+based on the maximum value of its associated data series.</small></p>
+
+<p>There are some features. Suppose we try to set new value to the Min, while this value
+greater then current Max, this value will be assigned to the Max instead of Min. If then
+you set new value to Max you will have incorrect Min value (Min value did not changed). To
+avoid this problem, use <tt>SetMinMax</tt> method, if you want to assign arbitrary values
+to the Min and Max at once. Note, changing properties Min or/and Max will reset the
+AutoMin or/and AutoMax to False.</p>
+
+<p>The axis limits also changed after zooming or panning of the plot by the mouse
+(z&amp;p). This processes did not change AutoMin and AutoMax. Shift+Click on the plot will
+restore limits after z&amp;p if properties Min and Max was not changed by another way
+after z&amp;p.</p>
+
+<h3><a Name="Data series"></a><a> Data series </h3>
+
+<p>There are no many kinds of data series. But you can write it yourself, and they will
+match your needs. Inherit it from Tsp_PlotSeries component and implement 1 procedure and 4
+functions: <br>
+* <tt>procedure <b>Draw</b>; virtual; </tt><br>
+* <tt>function <b>GetXMin</b>(var V:double):boolean; virtual;</tt> <br>
+* <tt>function <b>GetXMax</b>(var V:double):boolean; virtual;</tt> <br>
+* <tt>function <b>GetYMin</b>(var V:double):boolean; virtual;</tt> <br>
+* <tt>function <b>GetYMax</b>(var V:double):boolean; virtual;</tt> <br>
+<tt><strong>Draw</strong></tt> procedure called by parent plot to draw series. In this
+procedure you place code which </a><a HREF="#Custom draw">draws your data on plot</a>
+DCanvas. <b><tt>Get?Min</tt></b> and <b><tt>Get?Max</tt></b> functions are used by parent
+plot during auto scaling process. In this procedures you can find minimal or maximal value
+of your data and assign it to variable V. Function must return True if they set valid
+value to the V, otherwise they must return False. For example if data series has no data
+you cannot set valid value to the V. <br>
+There is also procedure which is reserved to draw Legends of the plot series.<br>
+<tt>procedure <b>DrawLegendMarker</b>(const LCanvas:TCanvas, MR:TRect); virtual;</tt> <br>
+It should paints series marker (for example line and point marker image) on LCanvas using
+rectangle&nbsp; MR. Of course you should also implement data storage wich are drawn by
+series.<font SIZE="-1"> </font>See sgr_data.pas and sgr_def.hlp for more details. <br>
+If you agree to store data in variant array there is more simple way. Derive Data Series
+from Ts_XYDataSeries. See how Tsp_XYLine was derived from Tsp_XYDataSeries in
+sgr_data.pas. At last, simplest way is to use Tsp_XYLine. In this case Draw procedure
+paints lines between data points and/or points markers. </p>
+
+<h3><a name="Plot markers"></a>Plot markers</h3>
+
+<p>Some times I need mark visually points on plot. First I use OnDrawField and OnDrawEnd
+handlers, but now I implements plot marker. There are Tsp_LineMarker and Tsp_ImageMarker
+in the current version. Tsp_LineMarker draws &quot;infinite&quot; vertical or horizontal
+line. For example to show X=0 and Y=0 lines as quasi axis you can create  
+&nbsp; vertical and horizontal LineMarkers with Position=0.0. In this case you will have to line on
+plot field. One from top to bottom at X=0 and second from left to right at Y=0.
+&nbsp; Tsp_ImageMarker can be used to mark point and so on. Notice one exotic way to use
+it. One guy wrote me that he used plot to draw trajectory of flight and ask about map. It
+can be done with Tsp_ImageMarker, place it and assign Picture property metafile with map
+image, set WhenDraw property=dmBeforeSeries and you will have background image which is
+scaled and moved same as data.</p>
+
+<h3><a NAME="Plot drawing"></a>Plot drawing</h3>
+
+<p>Plot has 2 areas - Field and Around Area. Field is area surrounded by 4 axis. The data
+series are painted on the Field. The axis caption, ticks and ticks label are painted on
+the Around Area which has 4 bands undr axis. If axis property FixedBandwidth less 1 then 
+plot calculates the band width taking into account propertyMargin and tiks label.</p>
+
+<p><img src="plot_img.png" alt="plot_img.png (3965 bytes)" WIDTH="211" HEIGHT="210"><br>
+</p>
+
+<p><strong>Sequence of draw operations to create plot image </strong><br>
+* Fill Around Area by Color&nbsp; <br>
+* Draw axis<br>
+* IntersectClipRect(DCanvas, FieldRect)<br>
+* Fill Field by FieldColor<br>
+*<font color="#004080"> Process OnFieldDraw event</font><br>
+* Draw Grids<br>
+* <font color="#004080">Draw plot markers </font>with WhenDraw=dmBeforeSeries<br>
+* <font color="#004080">Draw series</font><br>
+* <font color="#004080">Draw plot markers </font>with WhenDraw=dmAfterSeries<br>
+* RestoreClipRect<br>
+* <font color="#004080">Process OnDrawEnd event</font><br>
+* Draw border<br>
+during selected by color operations assigned custom draw procedures are called. </p>
+
+<p><a name="Custom draw"><strong>Custom draw rules</strong></a><br>
+This rules apply for Data Series Draw procedure and OnFieldDraw, OnDrawEnd and
+OnDrawCustomPoint event handlers. They must<br>
+* use DCanvas to draw<br>
+* use DWidth as plot width, DHeight as plot height <br>
+* do not change MapMode or Clipping Region of the DCanvas<br>
+* do not change or restore at the end Font<br>
+<br>
+<strong>Custom draw tips</strong><br>
+Use FieldRect if you need to know Field position on the plot image.<br>
+Use P2V and V2P axis methods to convert position on plot component to
+axis values and back.<br>
+</p>
+
+<h3><a NAME="Print"></a>Plot print</h3>
+
+<p>There is no special print method of component. You can draw plot on the printer canvas
+using method<strong> DrawPlot</strong>(DC : TCanvas; W, H : integer). This method 
+also is used to create DIB TBitmap in <strong>CreatePlotBitmap</strong>
+(BmpWidth, BmpHeight: integer): TBitmap.
+</p>
+
+</body>
+</html>

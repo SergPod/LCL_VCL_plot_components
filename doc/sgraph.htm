@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<title>SGraph Description File</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<meta NAME="AUTHOR" CONTENT="S.P.Pod'yachev">
+</head>
+
+<body BGCOLOR="#FFFFFF" background="white.bmp">
+
+<p><a HREF="#Introduction">Introduction</a> <br>
+<a HREF="#License">License</a> <br>
+<a HREF="#Disclaimer">Disclaimer</a> <br>
+<a HREF="#Start">How to start</a> <br>
+
+<h3><a NAME="Introduction"></a><b>Introduction</b></h3>
+
+<p>This is a set of Delphi/Lazarus components and classes for 2D plot
+(sgr_vcl.dpk/sgr_lcl.lpk). It is relatively simple. It more is of a gauge
+than a presentation element. The main features are: 
+
+<ul>
+  <li>Two horizontal and two vertical axes.</li>
+  <li>An auto minimum and maximum for the axes.</li>
+  <li>A swap of the Min and Max axis positions. </li>
+  <li>MoveMinMax method to provide smooth scrolling of axis ticks.</li>
+  <li>Panning and Zoom by mouse.</li>
+  <li>Buffered screen paint, can be off.</li>
+  <li>Copy to clipboard as DIB or as Metafile.</li>
+  <li>Custom Data Series.</li>
+  <li>DrawPlot method to replicate plot image </li>
+  <li>OnDrawField and OnDrawEnd events</li>
+</ul>
+
+<p>The main component is the Tsp_XYPlot. It holds four Tsp_Axis and controls the Data Series. The Tsp_XYPlot and Tsp_Axis provide base plot functionality like auto scale, zoom, and pan, and so on. The Data Series must be derived from Tsp_PlotSeries and implement data storage and how data are painted on the plot canvas. Examples of these components are Tsp_XYLine and Tsp_SpectrLines. A Plot also can have and control components inherited from Tsp_PlotMarker. A Plot marker draws something on the plot using the axis coordinate system. Examples of these components are Tsp_LineMarker and Tsp_ImageMarker.</p>
+
+<h3><a NAME="License"></a>License </h3>
+
+<p>The component files are <b>freeware</b>. You may use them for any purpose, but you must not claim them as your own when distributing copies.<br>
+Copyright © 1998-1999, Sergei P. Pod'yachev.</p>
+
+<h3><a NAME="Disclaimer"></a>Disclaimer </h3>
+
+<p>This software and the accompanying files are provided &quot;<b>As Is</b>&quot; and
+without any warranties as to performance of merchantability or any other warranties
+whether expressed or implied. The Author cannot and does not guarantee that any functions
+contained in the Software will be error free. The author is not liable for any damages
+resulting from the use and misuse of the component. </p>
+
+<h3><a NAME="Start"></a>How to start</h3>
+
+<p>Place the plot component and the data series component on the form, set the Plot property of the data series to link it with the plot. Play with the visual properties of the plot and series.
+There are also some <a href="notes.htm">notes</a> of using SGraph.
+The subdirectory <b>test</b> contains files of simple test programs (Lazarus and Delphi 12), which can be compiled without installing components to the IDE</p>
+
+<p><a href="sgraph_demo.png"><img src="sgraph_demo_sml.png" alt="sgraph_demo.png (9308 bytes)" WIDTH="100" HEIGHT="60"></a></p>
+
+<p>My best wishes. </p>
+
+<p>Sergei. P. Pod'yachev. <br>
+
+</body>
+</html>

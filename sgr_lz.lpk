@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <PathDelim Value="\"/>
+    <Name Value="sgr_lz"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="S.P. Podyachev"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <SyntaxMode Value="Delphi"/>
+        </SyntaxOptions>
+      </Parsing>
+      <CodeGeneration>
+        <Optimizations>
+          <OptimizationLevel Value="0"/>
+        </Optimizations>
+      </CodeGeneration>
+      <Linking>
+        <Debugging>
+          <DebugInfoType Value="dsDwarf2"/>
+          <UseHeaptrc Value="True"/>
+          <UseExternalDbgSyms Value="True"/>
+        </Debugging>
+      </Linking>
+      <Other>
+        <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
+      </Other>
+    </CompilerOptions>
+    <Description Value="sgr_laz is SGraph for Lazarus"/>
+    <Version Major="1" Minor="9"/>
+    <Files Count="9">
+      <Item1>
+        <Filename Value="sgr_reg.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="sgr_reg"/>
+      </Item1>
+      <Item2>
+        <Filename Value="sgr_misc.pas"/>
+        <UnitName Value="sgr_misc"/>
+      </Item2>
+      <Item3>
+        <Filename Value="sgr_def.pas"/>
+        <UnitName Value="sgr_def"/>
+      </Item3>
+      <Item4>
+        <Filename Value="sgr_mark.pas"/>
+        <UnitName Value="sgr_mark"/>
+      </Item4>
+      <Item5>
+        <Filename Value="sgr_scale.pas"/>
+        <UnitName Value="sgr_scale"/>
+      </Item5>
+      <Item6>
+        <Filename Value="sgr_point.pas"/>
+        <UnitName Value="sgr_point"/>
+      </Item6>
+      <Item7>
+        <Filename Value="sgr_line.pas"/>
+        <UnitName Value="sgr_line"/>
+      </Item7>
+      <Item8>
+        <Filename Value="sgr_xydata.pas"/>
+        <UnitName Value="sgr_xydata"/>
+      </Item8>
+      <Item9>
+        <Filename Value="sgr_xydata_series.pas"/>
+        <UnitName Value="sgr_xydata_series"/>
+      </Item9>
+    </Files>
+    <CompatibilityMode Value="True"/>
+    <RequiredPkgs Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

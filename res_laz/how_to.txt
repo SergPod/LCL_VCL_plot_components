@@ -1,0 +1,12 @@
+How to add icons my package components
+We have package "my_pkg" with components TComp1, TComp2 and want to add icons for components to IDE component pallete.
+First we have to make .png 24x24 files: tcomp1.png, tcomp2.png. If you want to get them from Delphi package, you can use the free "XN Resource Editor" to export icons from .dcr files.
+Now we need app "lazres". It's located in "tools" subfolder of IDE folder. Compile it under Windows: "c:\lazarus\tools\lazres.lpi" to lazres.exe. We use lazres.exe to create Lazarus resource file .lrs from .png files:
+ //c:\lazarus\tools\lazres.exe my_icons.lrs *.png It is not true S.P. это не правда
+  lazres resourcefilename filename1 [filename2 ... filenameN]
+  lazres resourcefilename @filelist   
+Into package my_pkg we add file my_icons.lrs (tab "Add file", type LRS). At least one unit in package must have:
+"initialization" in which we must write
+ {$I my_icons.lrs}
+also "uses LResources" in this unit.
+Compile and install the package, two icons must appear.

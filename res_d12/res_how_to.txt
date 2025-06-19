@@ -1,0 +1,35 @@
+создали png 24x24
+11.11.2016  19:43               945 TSP_IMAGEMARKER.png
+11.11.2016  19:43               193 TSP_LINEMARKER.png
+11.11.2016  19:46               248 TSP_NDSXYLINE.png
+11.11.2016  19:44               179 TSP_SPECTRLINES.png
+11.11.2016  19:45               216 TSP_XYLINE.png
+11.11.2016  19:45               169 TSP_XYPLOT.png
+11.11.2016  19:44               184 TSP_XYBAR.png
+09.10.2022  21:54               252 TSP_PLOTXYDATA.png
+
+2 ненужных у нас пока
+{TSP_XYBAR_PNG         RCDATA  "TSP_XYBAR.png"
+TSP_PLOTXYDATA_PNG    RCDATA  "TSP_PLOTXYDATA.png"}
+
+создадим текстовый файл sgr_vcl_icons.rc
+TSP_XYPLOT_PNG        RCDATA  "TSP_XYPLOT.png"
+TSP_XYLINE_PNG        RCDATA  "TSP_XYLINE.png"
+TSP_SPECTRLINES_PNG   RCDATA  "TSP_SPECTRLINES.png"7
+TSP_NDSXYLINE_PNG     RCDATA  "TSP_NDSXYLINE.png"
+TSP_LINEMARKER_PNG    RCDATA  "TSP_LINEMARKER.png"
+TSP_IMAGEMARKER_PNG   RCDATA  "TSP_IMAGEMARKER.png"
+
+ Важные нюансы 
+Ресурсы в .rc-файле должны использовать имена компонентов с суффиксом _PNG 
+(например, TSP_XYPLOT_PNG).
+ Физические файлы PNG оставьте с оригинальными именами (TSP_XYPLOT.png).
+
+прямо из этой директории командой
+> brcc32 sgr_vcl_icons.rc
+скомпилируем файл sgr_vcl_icons.rc
+получим файл
+sgr_vcl_icons.RES
+
+и потом в файле pas
+{$R 'res/sgr_vcl_icons.res'}
