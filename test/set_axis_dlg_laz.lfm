@@ -36,8 +36,8 @@ object FAxisPrptsDlg: TFAxisPrptsDlg
   end
   object Bevel1: TBevel
     Left = 14
-    Height = 212
-    Top = 28
+    Height = 216
+    Top = 24
     Width = 436
   end
   object BGCBtn: TButton
@@ -146,6 +146,15 @@ object FAxisPrptsDlg: TFAxisPrptsDlg
     Style = csDropDownList
     TabOrder = 1
     OnChange = AIndexChange
+  end
+  object TLineShow: TCheckBox
+    Left = 252
+    Height = 34
+    Top = 28
+    Width = 117
+    Caption = 'Show line'
+    TabOrder = 11
+    OnClick = TLineShowClick
   end
   object ColorDialog1: TColorDialog
     Color = clBtnFace

@@ -1681,27 +1681,30 @@ procedure Tsp_XYPlot.DrawAroundField;
     end;
   end;
 
-  procedure DrawAxises;
+  procedure DrawAxes;
   var
     x, y: integer;
     SavedFont: TFont;
   begin
     DCanvas.Brush.Style := bsClear;
-    with RA.LineAttr do
-      if Visible then
-        TA.DrawLine(DCanvas, 0, Width);
 
     with BA.LineAttr do
-      if Visible then
-        RA.DrawLine(DCanvas, Width, 0);
+       if Visible then  x:=Width
+       else x := 0;     // x = BA.LineAttr.Width
+    with TA.LineAttr do
+       if Visible then  y:=Width
+       else y := 0;     // y = TA.LineAttr.Width
+    LA.DrawLine(DCanvas, x, y);
+    RA.DrawLine(DCanvas, x, y);
 
     with LA.LineAttr do
-      if Visible then
-        BA.DrawLine(DCanvas, Width, 0);
-
-    with TA.LineAttr do
-      if Visible then
-        LA.DrawLine(DCanvas, 0, Width);
+      if Visible then  x:=0
+      else x := Width;     // x = LA.LineAttr.Width
+    with RA.LineAttr do
+      if Visible then  y:= 0
+      else y := Width;
+    TA.DrawLine(DCanvas, 0, 0);
+    BA.DrawLine(DCanvas, 0, 0);
 
     with DCanvas.Pen do
     begin
@@ -1764,7 +1767,7 @@ procedure Tsp_XYPlot.DrawAroundField;
 
 begin
   ClearBack;
-  DrawAxises;
+  DrawAxes;
   DrawBorder;
 end;
 

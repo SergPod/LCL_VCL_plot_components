@@ -9,6 +9,9 @@ uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
   Buttons, ExtCtrls, Spin, sgr_def, Dialogs;
 
 type
+
+  { TFAxisPrptsDlg }
+
   TFAxisPrptsDlg = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
@@ -22,6 +25,7 @@ type
     FontBtn: TButton;
     Mrgn: TSpinEdit;
     Label4: TLabel;
+    TLineShow: TCheckBox;
     TShow: TCheckBox;
     AIndex: TComboBox;
     Bevel1: TBevel;
@@ -32,6 +36,7 @@ type
     procedure ACaptionChange(Sender: TObject);
     procedure TCountChange(Sender: TObject);
     procedure MrgnChange(Sender: TObject);
+    procedure TLineShowClick(Sender: TObject);
     procedure TLShowClick(Sender: TObject);
     procedure TShowClick(Sender: TObject);
     procedure GShowClick(Sender: TObject);
@@ -89,6 +94,7 @@ begin
    ACaption.Text:=Caption;
    TCount.Value:=TicksCount;
    Invrs.Checked:=Inversed;
+   TLineShow.Checked:= Axis.LineAttr.Visible;
    TLShow.Checked:=not NoTicksLabel;
    TShow.Checked:=not NoTicks;
    GShow.Checked:=GridAttr.Visible;
@@ -135,6 +141,11 @@ end;
 procedure TFAxisPrptsDlg.MrgnChange(Sender: TObject);
 begin
   with Axis do Margin:=Mrgn.Value;
+end;
+
+procedure TFAxisPrptsDlg.TLineShowClick(Sender: TObject);
+begin
+  Axis.LineAttr.Visible := TLineShow.Checked;
 end;
 
 procedure TFAxisPrptsDlg.TLShowClick(Sender: TObject);

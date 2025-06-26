@@ -102,6 +102,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="sgr_lz"/>
+      </Item>
+      <Item>
         <PackageName Value="LCL"/>
       </Item>
     </RequiredPackages>

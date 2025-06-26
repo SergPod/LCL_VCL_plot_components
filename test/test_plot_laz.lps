@@ -8,9 +8,9 @@
       <Unit>
         <Filename Value="test_plot_laz.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <TopLine Value="2"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,10 +19,10 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="97"/>
         <CursorPos X="40" Y="12"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,29 +32,30 @@
         <ComponentName Value="FAxisPrptsDlg"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="74"/>
-        <CursorPos X="31" Y="93"/>
-        <UsageCount Value="27"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="8" Y="88"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\sgr_def.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos Y="8"/>
-        <UsageCount Value="15"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="1751"/>
+        <CursorPos X="11" Y="1770"/>
+        <UsageCount Value="16"/>
         <Bookmarks Count="1">
           <Item0 X="19" Y="217" ID="2"/>
         </Bookmarks>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\sgr_xydata_series.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="303"/>
         <CursorPos X="33" Y="324"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="19"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -66,10 +67,11 @@
       </Unit>
       <Unit>
         <Filename Value="..\sgr_scale.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="5"/>
-        <CursorPos Y="10"/>
-        <UsageCount Value="15"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="738"/>
+        <CursorPos Y="758"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\ldemo\DemoMain.pas"/>
@@ -107,8 +109,8 @@
       <Unit>
         <Filename Value="..\sgr_mark.pas"/>
         <EditorIndex Value="5"/>
-        <CursorPos X="14" Y="5"/>
-        <UsageCount Value="15"/>
+        <CursorPos X="20" Y="18"/>
+        <UsageCount Value="16"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -119,10 +121,10 @@
       </Unit>
       <Unit>
         <Filename Value="..\sgr_xydata.pas"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="183"/>
-        <CursorPos X="64" Y="198"/>
-        <UsageCount Value="11"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="52"/>
+        <CursorPos X="11" Y="198"/>
+        <UsageCount Value="12"/>
         <Bookmarks Count="1">
           <Item0 X="5" Y="79" Left="1" Top="68" ID="1"/>
         </Bookmarks>
@@ -147,121 +149,133 @@
         <CursorPos X="12" Y="3"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="D:\Lazarus\LW64b4.0\components_SP\sgraph_lz_1_9\sgr_def.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1679"/>
+        <CursorPos X="20" Y="1692"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="28">
+    <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="353" Column="25" TopLine="332"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1690" TopLine="1684"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="364" Column="25" TopLine="343"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1692" Column="17" TopLine="1684"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="375" Column="25" TopLine="354"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1696" Column="20" TopLine="1684"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="386" Column="25" TopLine="365"/>
+        <Filename Value="..\sgr_def.pas"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="425" Column="18" TopLine="404"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1692" Column="20" TopLine="1673"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="438" Column="17" TopLine="418"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1696" Column="20" TopLine="1677"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="474" Column="15" TopLine="453"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1700" Column="20" TopLine="1681"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="481" Column="15" TopLine="460"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1704" Column="20" TopLine="1686"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="491" Column="15" TopLine="470"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="738" Column="29" TopLine="586"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="516" Column="15" TopLine="504"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="110" Column="23" TopLine="98"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1700" TopLine="1686"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="71" Column="17" TopLine="50"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1696" Column="33" TopLine="1681"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="82" Column="19" TopLine="71"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1698" TopLine="1681"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="252" Column="46" TopLine="247"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="741" TopLine="721"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="61" Column="7" TopLine="52"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="742" TopLine="722"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="139" Column="17" TopLine="118"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="743" TopLine="723"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="159" Column="17" TopLine="138"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="746" TopLine="726"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="199" Column="18" TopLine="178"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="747" TopLine="727"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="241" Column="20" TopLine="220"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="748" TopLine="728"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="150" TopLine="138"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="749" TopLine="729"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="216" Column="8" TopLine="204"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="750" TopLine="730"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="252" Column="8" TopLine="239"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="753" TopLine="733"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="61" Column="40" TopLine="61"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="754" TopLine="734"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="150" TopLine="139"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="756" TopLine="736"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="204" Column="14" TopLine="195"/>
+        <Filename Value="..\sgr_scale.pas"/>
+        <Caret Line="757" TopLine="737"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="220" Column="25" TopLine="199"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1688" Column="45" TopLine="1681"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1695" Column="30" TopLine="1606"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="76" Column="32" TopLine="64"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1687" Column="97" TopLine="1658"/>
       </Position>
       <Position>
-        <Filename Value="..\sgr_xydata.pas"/>
-        <Caret Line="84" Column="35" TopLine="72"/>
+        <Filename Value="..\sgr_def.pas"/>
+        <Caret Line="1681" Column="22" TopLine="1679"/>
+      </Position>
+      <Position>
+        <Filename Value="..\sgr_def.pas"/>
       </Position>
     </JumpHistory>
     <RunParams>
