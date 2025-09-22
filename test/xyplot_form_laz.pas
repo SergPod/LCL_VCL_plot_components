@@ -52,6 +52,7 @@ procedure TForm1.CreateXYPlot;
 begin
   plt:= Tsp_XYPlot.Create(Self);
   plt.Parent := Self;
+  plt.BorderSpacing.Around := 10;
   plt.Align:= alClient;
   plt.FieldColor:= $00EECCCC; //clCream clMoneyGreen
   plt.LeftAxis.Caption:='Left Axis';
@@ -64,6 +65,7 @@ begin
   if ckbDoOnFieldDraw.Checked then
     plt.OnFieldDraw := XYPlotFieldDraw;
   plt.OnMouseUp := XYPlotMouseUp;
+  plt.BorderStyle := bs_Raised;
 end;
 
 procedure TForm1.CreateXYSeries;

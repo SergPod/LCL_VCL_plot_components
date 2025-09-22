@@ -158,7 +158,7 @@ type
   end;
 
   Tsp_BorderStyle = (bs_None, bs_Raised, bs_Lowered, bs_Gutter,
-    bs_BlackRect, bs_BoldRect, bs_FocusRect);
+    bs_BlackRect, bs_BoldRect, bs_Bottom, bs_Right, bs_FocusRect); //2025
   TGetTickLabelEvent = procedure(Sender: Tsp_Axis; LabelNum: integer;
     LabelVal: double; var LS: string) of object;
   //Lz Tsp_ShiftKeys=set of (ssShift, ssAlt, ssCtrl);
@@ -1795,7 +1795,7 @@ procedure Tsp_XYPlot.DrawBorder;
 var
   R: TRect;
 begin
-  R := Rect(0, 0, dWidth, dHeight);
+  R := Rect(0, 0, dWidth-1, dHeight-1);
   with DCanvas do
   begin
     Brush.style := bsClear;
@@ -1803,28 +1803,29 @@ begin
     begin
       Style := psSolid;
       Mode := pmCopy;
-    end;
+      Pen.Color := Self.Color;
+    end;                  // 2025   Border drawing corrected
     with R do
+    begin
+      rectangle(left, top, right, bottom);
       rectangle(left + 1, top + 1, right - 1, bottom - 1);
+    end;
     case fFrameStyle of
       bs_None: with R do
         begin
-          Pen.Color := Self.Color;
-          rectangle(left, top, right, bottom);
-          rectangle(left + 1, top + 1, right - 1, bottom - 1);
         end;
       bs_Raised: with R do
         begin
           //Lz DCanvas.Frame3D( R, clBtnHighlight, clBtnShadow,1);
           MyFrame3D(DCanvas, R, clBtnHighlight, clBtnShadow, 1);  //Lz
           Pen.Color := Self.Color;
-          rectangle(left, top, right, bottom);
+          //rectangle(left, top, right, bottom);
         end;
       bs_Lowered: with R do
         begin
           MyFrame3D(DCanvas, R, clBtnShadow, clBtnHighlight, 1);
           Pen.Color := Self.Color;
-          rectangle(left, top, right, bottom);
+          //rectangle(left, top, right, bottom);
         end;
       bs_Gutter: with R do
         begin
@@ -1860,6 +1861,17 @@ begin
           polyline([point(left + 1, top + 1), point(right - 1, top + 1),
             point(right - 1, bottom - 2), point(left, bottom - 2), point(left, top)]);
       end;
+       bs_Bottom, bs_Right:
+       begin
+         Pen.Color := clDkGray;
+         Pen.Style := psSolid;
+         Pen.Width :=1;
+         MoveTo(R.Right-1, R.Bottom-1);
+         if  fFrameStyle = bs_Right then
+           LineTo(R.Right-1, R.Top+1)
+         else
+           LineTo(R.Left+1, R.Bottom-1);
+       end;
     end;
   end;
 end;

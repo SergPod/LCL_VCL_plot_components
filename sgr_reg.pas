@@ -42,6 +42,15 @@ begin
                      Tsp_LineMarker, Tsp_ImageMarker], axrComponentOnly);
 end;
 
+{ Назначение RegisterNonActiveX: Эта процедура сообщает IDE Delphi, что
+перечисленные компоненты НЕ должны быть доступны для использования
+в технологии ActiveX
+ Параметр axrComponentOnly: Это флаг, который уточняет, как именно компонент
+должен быть исключён из поддержки ActiveX. Конкретно axrComponentOnly означает,
+что компонент является чисто визуальным компонентом (потомком TComponent или
+TGraphicControl), который не предоставляет и не требует ActiveX-интерфейсов.
+} 
+
 initialization
 
 {$IFDEF FPC}

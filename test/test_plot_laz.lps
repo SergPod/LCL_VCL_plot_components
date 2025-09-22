@@ -19,9 +19,10 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="97"/>
-        <CursorPos X="40" Y="12"/>
+        <TopLine Value="43"/>
+        <CursorPos X="39" Y="59"/>
         <UsageCount Value="48"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -40,10 +41,9 @@
       </Unit>
       <Unit>
         <Filename Value="..\sgr_def.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="1751"/>
-        <CursorPos X="11" Y="1770"/>
+        <TopLine Value="1698"/>
+        <CursorPos Y="1758"/>
         <UsageCount Value="16"/>
         <Bookmarks Count="1">
           <Item0 X="19" Y="217" ID="2"/>

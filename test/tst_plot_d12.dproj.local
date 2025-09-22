@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.729,E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.pas=E:\Prj\D12\sgr_lpk\test\set_axis_dlg_d12.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.729,E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.dfm=E:\Prj\D12\sgr_lpk\test\set_axis_dlg_d12.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.050,E:\Prj\D12\sgr_lpk\test\tst_plot_d12.dproj=E:\Prj\D12\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.215,=E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.553,E:\Prj\D12\sgr_lpk\test\xyplot_form_d12.dfm=E:\Prj\D12\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,E:\Prj\D12\Unit1.pas=E:\Prj\D12\sgr_lpk\test\xyplot_form_d12.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.729,E:\Prj\D12\sgr_lpk\test\set_axis_dlg_d12.dfm=E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.729,E:\Prj\D12\sgr_lpk\test\set_axis_dlg_d12.pas=E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.042,=E:\Prj\D12\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.553,E:\Prj\D12\sgr_lpk\test\xyplot_form_d12.pas=E:\Prj\D12\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.215,=E:\Prj\D12\sgr_lpk\test\AxisPrptsDlg.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,E:\Prj\D12\Unit1.dfm=E:\Prj\D12\sgr_lpk\test\xyplot_form_d12.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.050,E:\Prj\D12\Project1.dproj=E:\Prj\D12\sgr_lpk\test\tst_plot_d12.dproj</Transaction>
   </Transactions>
 </BorlandProject>

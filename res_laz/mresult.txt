@@ -1,7 +1,5 @@
 TSP_IMAGEMARKER.png ResourceName='TSP_IMAGEMARKER' Type='PNG'
 TSP_LINEMARKER.png ResourceName='TSP_LINEMARKER' Type='PNG'
-TSP_NDSXYLINE.png ResourceName='TSP_NDSXYLINE' Type='PNG'
 TSP_SPECTRLINES.png ResourceName='TSP_SPECTRLINES' Type='PNG'
-TSP_PLOTXYDATA.png ResourceName='TSP_PLOTXYDATA' Type='PNG'
 TSP_XYLINE.png ResourceName='TSP_XYLINE' Type='PNG'
 TSP_XYPLOT.png ResourceName='TSP_XYPLOT' Type='PNG'
