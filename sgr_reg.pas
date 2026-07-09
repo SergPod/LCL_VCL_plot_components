@@ -16,17 +16,17 @@ pascal units. Delphi forever;)}
 interface
 
 uses Classes,
-{$IFDEF FPC}
+  {$IFDEF FPC}
   LResources,
-{$ELSE}
+  {$ELSE}
   VCL.Imaging.pngimage,
-{$ENDIF}
+  {$ENDIF}
   sgr_def, sgr_xydata_series,  {sgr_eds,} sgr_mark;
 
-{***************************************************}
-{ Register Sgraph components                        }
-{***************************************************}
-{:}
+  {***************************************************}
+  { Register Sgraph components                        }
+  {***************************************************}
+  {:}
 
 procedure Register;
 
@@ -34,14 +34,13 @@ implementation
 
 procedure Register;
 begin
- RegisterComponents('Sgraph', [Tsp_XYPlot, Tsp_XYLine,
-                               Tsp_SpectrLines, {Tsp_ndsXYLine,}
-                               Tsp_LineMarker, Tsp_ImageMarker]);
- RegisterNonActiveX([Tsp_XYPlot, Tsp_XYLine,
-                     Tsp_SpectrLines, {Tsp_ndsXYLine,}
-                     Tsp_LineMarker, Tsp_ImageMarker], axrComponentOnly);
+  RegisterComponents('Sgraph', [Tsp_XYPlot, Tsp_XYLine,
+    Tsp_SpectrLines, {Tsp_ndsXYLine,}
+    Tsp_LineMarker, Tsp_ImageMarker]);
+  RegisterNonActiveX([Tsp_XYPlot, Tsp_XYLine, Tsp_SpectrLines,
+    {Tsp_ndsXYLine,}
+    Tsp_LineMarker, Tsp_ImageMarker], axrComponentOnly);
 end;
-
 { Назначение RegisterNonActiveX: Эта процедура сообщает IDE Delphi, что
 перечисленные компоненты НЕ должны быть доступны для использования
 в технологии ActiveX
@@ -49,15 +48,14 @@ end;
 должен быть исключён из поддержки ActiveX. Конкретно axrComponentOnly означает,
 что компонент является чисто визуальным компонентом (потомком TComponent или
 TGraphicControl), который не предоставляет и не требует ActiveX-интерфейсов.
-} 
-
+}
 initialization
 
-{$IFDEF FPC}
+  {$IFDEF FPC}
   {$I res_laz/sgr_icons.lrs}
-{$ELSE}
+  {$ELSE}
   {$R 'res_d12/sgr_vcl_icons.res'}
-{$ENDIF}
+  {$ENDIF}
 
 
 end.

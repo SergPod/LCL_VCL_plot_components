@@ -4,20 +4,19 @@
   {$MODE Delphi}
 {$ENDIF}
 
-{ (c) S.P.Pod'yachev 2021-2025 }
+{ (c) S.P.Pod'yachev 2021-2026 }
 
-//? TODO add save/load to/from TStringList
 
 interface
 
 uses
 {$IFDEF FPC}
   LCLIntf, LCLType,
-  SysUtils, Classes, Graphics
+  SysUtils, Classes, Graphics, Clipbrd
 {$ELSE}
   WinApi.Windows,
   System.SysUtils,  System.Classes,
-  Vcl.Graphics
+  Vcl.Graphics, Vcl.Clipbrd
 {$ENDIF}
 ;
 
@@ -125,6 +124,11 @@ type
     //used to for fast read data (do not modify w/o strong reasons)
     property XV: Tsp_ArrayOfDouble read fXV;
     property YV: Tsp_ArrayOfDouble read fYV;
+
+    //save XY data to text file as two columns (AWid - field width, ADec - decimal places) 07.2026
+    procedure SaveToFile(const FileName: string; AWid, ADec: integer);
+    //copy XY data to clipboard as two columns (AWid - field width, ADec - decimal places) 07.2026
+    procedure CopyToClipboard(AWid, ADec: integer);
   end;
 
 implementation
@@ -507,6 +511,37 @@ begin
   System.Move(fXV[toi + 1], fXV[fromi], j);
   System.Move(fYV[toi + 1], fYV[fromi], j);
   CheckAndCallOnChange();
+end;
+
+procedure Tsp_XYData.SaveToFile(const FileName: string; AWid, ADec: integer);
+var
+  F: TextFile;
+  j: integer;
+begin
+  AssignFile(F, FileName);
+  Rewrite(F);
+  try
+    for j := 0 to fPN - 1 do
+      Writeln(F, fXV[j]:AWid:ADec, ' ', fYV[j]:AWid:ADec);
+  finally
+    CloseFile(F);
+  end;
+end;
+
+procedure Tsp_XYData.CopyToClipboard(AWid, ADec: integer);
+var
+  j: integer;
+  S: string;
+begin
+  S := '';
+  for j := 0 to fPN - 1 do
+  begin
+    if j > 0 then
+      S := S + LineEnding;
+    S := S + FloatToStrF(fXV[j], ffFixed, AWid, ADec) + ' ' +
+            FloatToStrF(fYV[j], ffFixed, AWid, ADec);
+  end;
+  Clipboard.AsText := S;
 end;
 
 end.

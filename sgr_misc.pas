@@ -4,7 +4,7 @@ unit sgr_misc;
   {$MODE Delphi}
 {$ENDIF}
 
-{ (c) S.P.Pod'yachev 1998 - 2025 } 
+{ (c) S.P.Pod'yachev 1998 - 2025 }
 
 interface
 
@@ -18,11 +18,11 @@ uses
   Vcl.Graphics, Vcl.ExtCtrls;
   {$ENDIF}
 
-{***************************************************}
-{ Some procedures & objects used for drawing        }
-{ or rudiment used the old one for draw buffering   }
-{***************************************************}
-{:}
+  {***************************************************}
+  { Some procedures & objects used for drawing        }
+  { or rudiment used the old one for draw buffering   }
+  {***************************************************}
+  {:}
 
 type
   { Screen Compatible Bitmap for double buffer paint}

@@ -94,6 +94,8 @@ type
     procedure UseExternalData(ExtData: Tsp_XYData);
     procedure UseInternalData();
 
+    property  XYDataPtr: Tsp_XYData read fXYDataPtr; // 2026
+
     //lock invalidate plot while data are changing and then unlock it
     property LockInvalidate: boolean read fLockInvalidate write setLockInvalidate;
 
