@@ -125,10 +125,16 @@ type
     property XV: Tsp_ArrayOfDouble read fXV;
     property YV: Tsp_ArrayOfDouble read fYV;
 
-    //save XY data to text file as two columns (AWid - field width, ADec - decimal places) 07.2026
-    procedure SaveToFile(const FileName: string; AWid, ADec: integer);
-    //copy XY data to clipboard as two columns (AWid - field width, ADec - decimal places) 07.2026
-    procedure CopyToClipboard(AWid, ADec: integer);
+    // present XY data as text with two columns ASeparator between X and Y
+    // X/YWid - field width, X/YDec - decimal places,  07.2026
+    function GenerateTextData(XWid, XDec, YWid, YDec: integer;
+                                     const ASeparator: Char = #9): string;
+    //save XY data to text file as two columns
+    // X/YWid - field width, X/YDec - decimal places 07.2026
+    procedure SaveToFile(const FileName: string; XWid, XDec, YWid, YDec: integer);
+    //copy XY data to clipboard as two columns
+    // X/YWid - field width, X/YDec - decimal places 07.2026
+    procedure CopyToClipboard(XWid, XDec, YWid, YDec: integer);
   end;
 
 implementation
@@ -513,35 +519,116 @@ begin
   CheckAndCallOnChange();
 end;
 
-procedure Tsp_XYData.SaveToFile(const FileName: string; AWid, ADec: integer);
+function Tsp_XYData.GenerateTextData(XWid, XDec, YWid, YDec: integer;
+                                 const ASeparator: Char = #9): string;
+var
+  j: integer;
+  SB: TStringBuilder;
+  LE: string;
+begin
+  Result := '';
+  if fPN <= 0 then Exit;
+
+  LE := LineEnding;
+  SB := TStringBuilder.Create;
+  try
+    // Задаем Capacity для точного выделения памяти одним куском
+    SB.Capacity := (XWid + 1 + YWid + Length(LE)) * fPN;
+
+    for j := 0 to fPN - 1 do
+    begin
+      if j > 0 then
+        SB.Append(LE);
+
+      SB.Append(FloatToStrF(fXV[j], ffFixed, XWid, XDec));
+      SB.Append(ASeparator);
+      SB.Append(FloatToStrF(fYV[j], ffFixed, YWid, YDec));
+    end;
+
+    Result := SB.ToString;
+  finally
+    SB.Free;
+  end;
+end;
+
+procedure Tsp_XYData.SaveToFile(const FileName: string;
+                                XWid, XDec, YWid, YDec: integer);
+var
+  FS: TFileStream;
+  FullText: string;
+begin
+  if fPN <= 0 then Exit;
+  FullText := GenerateTextData(XWid, XDec, YWid, YDec);
+  if FullText = '' then Exit;
+
+  // Режим fmCreate перезапишет старый файл или создаст новый.
+  FS := TFileStream.Create(FileName, fmCreate);
+  try
+    // Записываем всю строку целиком за ОДИН системный вызов.
+    FS.WriteBuffer(FullText[1], Length(FullText));
+  finally
+    FS.Free;
+  end;
+end;
+
+procedure Tsp_XYData.CopyToClipboard(XWid, XDec, YWid, YDec: integer);
+begin
+  if fPN <= 0 then Exit;
+  // Просто вызываем генератор и помещаем результат в буфер
+  Clipboard.AsText := GenerateTextData(XWid, XDec, YWid, YDec);
+end;
+
+{
+procedure Tsp_XYData.SaveToFile(const FileName: string;
+                                 XWid, XDec, YWid, YDec: integer);
 var
   F: TextFile;
   j: integer;
+const
+  CH_TAB = #9;
 begin
   AssignFile(F, FileName);
   Rewrite(F);
   try
     for j := 0 to fPN - 1 do
-      Writeln(F, fXV[j]:AWid:ADec, ' ', fYV[j]:AWid:ADec);
+      Writeln(F, fXV[j]:XWid:XDec, CH_TAB, fYV[j]:YWid:YDec);
   finally
     CloseFile(F);
   end;
 end;
 
-procedure Tsp_XYData.CopyToClipboard(AWid, ADec: integer);
+
+procedure Tsp_XYData.CopyToClipboard(XWid, XDec, YWid, YDec: integer);
 var
   j: integer;
-  S: string;
+  SB: TStringBuilder;
+  LE: string;
+const
+  CH_TAB = #9;
 begin
-  S := '';
-  for j := 0 to fPN - 1 do
-  begin
-    if j > 0 then
-      S := S + LineEnding;
-    S := S + FloatToStrF(fXV[j], ffFixed, AWid, ADec) + ' ' +
-            FloatToStrF(fYV[j], ffFixed, AWid, ADec);
+  if fPN <= 0 then Exit;
+
+  LE := LineEnding; // Константа переноса строки (\r\n для Windows)
+  SB := TStringBuilder.Create;
+  try
+    // предсказываем Билдеру примерный объем данных (Capacity).
+    // Это предотвратит лишние промежуточные удвоения памяти на старте.
+    SB.Capacity := (XWid + 1 + YWid + Length(LE)) * fPN;
+    for j := 0 to fPN - 1 do
+    begin
+      // Если это не первая строка, добавляем перенос
+      if j > 0 then
+        SB.Append(LE);
+      SB.Append(FloatToStrF(fXV[j], ffFixed, XWid, XDec));
+      SB.Append(CH_TAB);
+      SB.Append(FloatToStrF(fYV[j], ffFixed, YWid, YDec));
+    end;
+    // Метод ToString соберет из кусочков памяти одну чистую строку
+    Clipboard.AsText := SB.ToString;
+  finally
+    SB.Free;
   end;
-  Clipboard.AsText := S;
 end;
+}
 
 end.
